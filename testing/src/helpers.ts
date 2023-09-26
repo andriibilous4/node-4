@@ -1,7 +1,7 @@
 import { SUPPORTED_COUNTRIES } from './config';
 import { PublicHoliday, PublicHolidayShort } from './types';
 
-const validateCountry = (country: string) => {
+export const validateCountry = (country: string) => {
   return SUPPORTED_COUNTRIES.includes(country);
 };
 

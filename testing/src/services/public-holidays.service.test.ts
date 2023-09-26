@@ -84,6 +84,44 @@ describe('getNextPublicHolidays', () => {
   })
 })
 
+describe('Integration Test - getListOfPublicHolidays', () => {
+  it('should return a list of public holidays', async () => {
+    const year = new Date().getFullYear(); 
+    const countryCode = 'US';
+
+    const result = await getListOfPublicHolidays(year, countryCode);
+
+    expect(result).toBeInstanceOf(Array);
+    expect(result[0]).toHaveProperty('date');
+    expect(result[0]).toHaveProperty('name');
+    expect(result[0]).toHaveProperty('countryCode', countryCode);
+  });
+});
+
+describe('Integration Test - checkIfTodayIsPublicHoliday', () => {
+  it('should return true or false depending on the date', async () => {
+    const countryCode = 'US';
+
+    const result = await checkIfTodayIsPublicHoliday(countryCode);
+
+    expect(typeof result).toBe('boolean');
+  });
+});
+
+describe('Integration Test - getNextPublicHolidays', () => {
+  it('should return a list of the next public holidays', async () => {
+    const countryCode = 'US';
+
+    const result = await getNextPublicHolidays(countryCode);
+
+    expect(result).toBeInstanceOf(Array);
+    expect(result[0]).toHaveProperty('date');
+    expect(result[0]).toHaveProperty('name');
+    expect(result[0]).toHaveProperty('countryCode', countryCode);
+  });
+});
+
+
 
 
 
